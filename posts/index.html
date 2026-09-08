@@ -1,7 +1,281 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>My New Hugo Project</title><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=description content><meta name=generator content="Hugo 0.165.0"><meta name=robots content="index, follow"><link rel=stylesheet href=/ananke/css/main.02a37ad6c4e155c542d276915a0e3f83f5c7c5fec443350f6e60753f1679b7a7.css integrity="sha256-AqN61sThVcVC0naRWg4/g/XHxf7EQzUPbmB1PxZ5t6c=" crossorigin=anonymous><script>(function(){"use strict";function t(){for(var t=document.querySelectorAll(".code-block .code-copy[hidden]"),e=0;e<t.length;e++)t[e].hidden=!1}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",t):t();function e(e){var t=e.querySelector(".code-copy-label"),n=t?t.textContent:null;e.classList.add("is-copied"),t&&(t.textContent="Copied"),window.setTimeout(function(){e.classList.remove("is-copied"),t&&n!==null&&(t.textContent=n)},2e3)}function n(e){var n,t=document.createElement("textarea");t.value=e,t.setAttribute("readonly",""),t.style.position="absolute",t.style.left="-9999px",document.body.appendChild(t),t.select(),n=!1;try{n=document.execCommand("copy")}catch{n=!1}return document.body.removeChild(t),n}function s(t){var s,o,a,i=t.closest(".code-block");if(!i)return;if(s=i.querySelector("pre"),!s)return;a=s.querySelector("code")||s,o=a.innerText,navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(o).then(function(){e(t)},function(){n(o)&&e(t)}):n(o)&&e(t)}document.addEventListener("click",function(e){var t=e.target.closest(".code-copy");t&&s(t)})})()</script><link href=/posts/index.xml rel=alternate type=application/rss+xml title="My New Hugo Project"><link href=/posts/index.xml rel=feed type=application/rss+xml title="My New Hugo Project"><link rel=canonical href=https://mofox-elysia.github.io/posts/><meta property="og:url" content="https://mofox-elysia.github.io/posts/"><meta property="og:site_name" content="My New Hugo Project"><meta property="og:title" content="Posts"><meta property="og:locale" content="zh_cn"><meta property="og:type" content="website"><meta itemprop=name content="Posts"><meta itemprop=datePublished content="2026-09-08T13:42:55+08:00"><meta itemprop=dateModified content="2026-09-08T13:42:55+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Posts"></head><body class="ma0 avenir bg-near-white production is-section is-section"><header><div class="pb3-m pb6-l bg-black"><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l center items-center justify-between"><a href=/ class="f3 fw2 hover-white white-90 dib no-underline">My New Hugo Project</a><div class="flex-l items-center"><div class=ananke-socials></div></div></div></nav><div class="tc-l pv3 ph3 ph4-ns"><h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">Posts</h1></div></div></header><main class=pb7 role=main><article class="pa3 pa4-ns nested-copy-line-height"><section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links mid-gray"></section><section class="flex-ns mt5 flex-wrap justify-around"><div class="w-100 w-30-l mb4 relative bg-white"><div class="w-100 mb4 nested-copy-line-height relative bg-white"><div class="mb3 pa4 gray overflow-hidden bg-white"><span class="f6 db">Posts</span>
-<time class="f6 db" datetime=2026-09-08T13:42:55+08:00>September 8, 2026</time><h1 class="f3 near-black"><a href=/posts/my-first-post/ class="link black dim">新的开始</a></h1><div class="nested-links f5 lh-copy nested-copy-line-height"><h2 id=简介>简介</h2><p>测试博客。
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Project</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="">
+    <meta name="generator" content="Hugo 0.165.0">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    <link rel="stylesheet" href="/ananke/css/main.02a37ad6c4e155c542d276915a0e3f83f5c7c5fec443350f6e60753f1679b7a7.css" integrity="sha256-AqN61sThVcVC0naRWg4/g/XHxf7EQzUPbmB1PxZ5t6c=" crossorigin="anonymous">
+    <script>
+  (function () {
+    "use strict";
+
+    
+    
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
+
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
+
+    
+      
+
+    
+
+    
+    
+      <link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="My New Hugo Project" />
+      <link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="My New Hugo Project" />
+      
+    
+
+    
+      <link rel="canonical" href="https://mofox-elysia.github.io/posts/">
+    
+
+    
+    
+    <meta property="og:url" content="https://mofox-elysia.github.io/posts/">
+	<meta property="og:site_name" content="My New Hugo Project">
+	<meta property="og:title" content="Posts">
+	<meta property="og:locale" content="zh_cn">
+	<meta property="og:type" content="website">
+
+	<meta itemprop="name" content="Posts">
+	<meta itemprop="datePublished" content="2026-09-08T20:43:16+08:00">
+	<meta itemprop="dateModified" content="2026-09-08T20:43:16+08:00">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Posts">
+
+      
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production is-section is-section">
+
+  <header>
+    <div class="pb3-m pb6-l bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        My New Hugo Project
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      
+      <div class="tc-l pv3 ph3 ph4-ns">
+        <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
+          Posts
+        </h1>
+        
+      </div>
+    </div>
+  </header>
+
+<main class="pb7" role="main">
+  
+  
+
+  <article class="pa3 pa4-ns nested-copy-line-height">
+    <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links mid-gray"></section>
+    <section class="flex-ns mt5 flex-wrap justify-around">
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          
+<div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    
+      <time class="f6 db" datetime="2026-09-08T20:43:16+08:00">September 8, 2026</time>
+    
+    <h1 class="f3 near-black">
+      <a href="/posts/00-%E5%BC%80%E5%A7%8B-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="link black dim">
+        开始-搭建博客
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="git使用以及搭建hugo的ananke主题博客">git使用以及搭建Hugo的Ananke主题博客</h1>
+<h2 id="一环境搭建">一、环境搭建</h2>
+<h3 id="1习惯养成">1.习惯养成</h3>
+<ul>
+<li>每次通过apt install &lt;包名&gt;下载时，先用apt update更新软件包列表（其实有些时候好像并不好使）</li>
+</ul>
+<h3 id="2安装gohugo">2.安装go、hugo</h3>
+<ul>
+<li>安装go</li>
+</ul>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt update
+</span></span><span style="display:flex;"><span>apt install golang-go </span></span></code></pre></div>
+  </div><ul>
+<li>安装hugo</li>
+</ul>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#官方推荐debian系统使用apt安装</span>
+</span></span><span style="display:flex;"><span>apt install hugo</span></span></code></pre></div>
+  </div><p>不知道是apt问题还是什么原因，下载出来的版本是0.111.0（肯定更新完了啊）。。。。
+<strong>官方最新版本发布页：https://github.com/gohugoio/hugo/releases</strong>
+从这个页面获取最新版本的安装包，这里我找到的是0.165.0，https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wegt https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb
+</span></span><span style="display:flex;"><span>dpkg &lt;文件目录&gt;<span style="color:#ae81ff">\安</span>装包.deb</span></span></code></pre></div>
+  </div><p>其他步骤和官网相同。</p>
+<h2 id="二-git基础命令">二 、git基础命令</h2>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git add .  <span style="color:#75715e">#自动扫描项目中所有非排除文件的更改并上传</span>
+</span></span><span style="display:flex;"><span>git add &lt;文件路径&gt;  <span style="color:#75715e">#精准上传指定的文件夹或者文件</span>
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;文件修改描述&#34;</span>  <span style="color:#75715e">#提交时备注的修改描述</span>
+</span></span><span style="display:flex;"><span>git push -f origin &lt;分支名&gt;  <span style="color:#75715e">#选择要上传的分支</span>
+</span></span><span style="display:flex;"><span>git init  <span style="color:#75715e">#新建本地仓库</span>
+</span></span><span style="display:flex;"><span>git branch  <span style="color:#75715e">#查看当前有的分支</span>
+</span></span><span style="display:flex;"><span>git checkout &lt;分支名&gt;  <span style="color:#75715e">#切换分支</span>
+</span></span><span style="display:flex;"><span>git push origin --delete &lt;分支名&gt;  <span style="color:#75715e">#删除所选分支，删之前记得切换分支。</span></span></span></code></pre></div>
+  </div><h2 id="任务清单">任务清单</h2>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 熟悉git命令</li>
+<li><input checked="" disabled="" type="checkbox"> 搭建个人博客</li>
+<li><input checked="" disabled="" type="checkbox"> 发布第一篇blog</li>
+</ul>
+<blockquote>
+<p><del>嗯，同时清晰认知到自己是一个废物。</del></p>
+    </div>
+    <a href="/posts/00-%E5%BC%80%E5%A7%8B-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+  </div>
+</div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          
+<div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    
+      <time class="f6 db" datetime="2026-09-08T13:42:55+08:00">September 8, 2026</time>
+    
+    <h1 class="f3 near-black">
+      <a href="/posts/my-first-post/" class="link black dim">
+        新的开始
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="简介">简介</h2>
+<p>测试博客。
 这是 <strong>粗体</strong> 文字，这是 <em>斜体</em>文字
-请查看 <a href=https://gohugo.io>hugo</a></p></div><a href=/posts/my-first-post/ class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a></div></div></div></section></article></main><footer class="bg-black bottom-0 w-100 pa3" role=contentinfo><div class="flex justify-between"><a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href=https://mofox-elysia.github.io/>&copy; My New Hugo Project 2026</a><div><div class=ananke-socials></div></div></div></footer></body></html>
+请查看 <a href="https://gohugo.io">hugo</a></p>
+    </div>
+    <a href="/posts/my-first-post/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+  </div>
+</div>
+
+        </div>
+      
+    </section>
+    </article>
+</main><footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://mofox-elysia.github.io/" >
+    &copy;  My New Hugo Project 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+</body>
+</html>
 
 
 

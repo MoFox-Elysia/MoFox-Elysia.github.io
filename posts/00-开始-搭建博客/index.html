@@ -4,9 +4,64 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>My New Hugo Project</title>
+    <title>开始-搭建博客 | My New Hugo Project</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="git使用以及搭建Hugo的Ananke主题博客
+一、环境搭建
+1.习惯养成
+
+每次通过apt install &lt;包名&gt;下载时，先用apt update更新软件包列表（其实有些时候好像并不好使）
+
+2.安装go、hugo
+
+安装go
+
+
+    
+      Copy
+    
+    apt update
+apt install golang-go 
+  
+安装hugo
+
+
+    
+      Copy
+    
+    #官方推荐debian系统使用apt安装
+apt install hugo
+  不知道是apt问题还是什么原因，下载出来的版本是0.111.0（肯定更新完了啊）。。。。
+官方最新版本发布页：https://github.com/gohugoio/hugo/releases
+从这个页面获取最新版本的安装包，这里我找到的是0.165.0，https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb
+
+    
+      Copy
+    
+    wegt https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb
+dpkg &lt;文件目录&gt;\安装包.deb
+  其他步骤和官网相同。
+二 、git基础命令
+
+    
+      Copy
+    
+    git add .  #自动扫描项目中所有非排除文件的更改并上传
+git add &lt;文件路径&gt;  #精准上传指定的文件夹或者文件
+git commit -m &#34;文件修改描述&#34;  #提交时备注的修改描述
+git push -f origin &lt;分支名&gt;  #选择要上传的分支
+git init  #新建本地仓库
+git branch  #查看当前有的分支
+git checkout &lt;分支名&gt;  #切换分支
+git push origin --delete &lt;分支名&gt;  #删除所选分支，删之前记得切换分支。
+  任务清单
+
+ 熟悉git命令
+ 搭建个人博客
+ 发布第一篇blog
+
+
+嗯，同时清晰认知到自己是一个废物。">
     <meta name="generator" content="Hugo 0.165.0">
     
     
@@ -94,38 +149,49 @@
     
 
     
-    
-      <link href="/index.xml" rel="alternate" type="application/rss+xml" title="My New Hugo Project" />
-      <link href="/index.xml" rel="feed" type="application/rss+xml" title="My New Hugo Project" />
-      
-    
 
     
-      <link rel="canonical" href="https://mofox-elysia.github.io/">
+      <link rel="canonical" href="https://mofox-elysia.github.io/posts/00-%E5%BC%80%E5%A7%8B-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
     
 
     
     
-    <meta property="og:url" content="https://mofox-elysia.github.io/">
+    <meta property="og:url" content="https://mofox-elysia.github.io/posts/00-%E5%BC%80%E5%A7%8B-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
 	<meta property="og:site_name" content="My New Hugo Project">
-	<meta property="og:title" content="My New Hugo Project">
+	<meta property="og:title" content="开始-搭建博客">
+	<meta property="og:description" content="git使用以及搭建Hugo的Ananke主题博客 一、环境搭建 1.习惯养成 每次通过apt install &lt;包名&gt;下载时，先用apt update更新软件包列表（其实有些时候好像并不好使） 2.安装go、hugo 安装go Copy apt update apt install golang-go 安装hugo Copy #官方推荐debian系统使用apt安装 apt install hugo 不知道是apt问题还是什么原因，下载出来的版本是0.111.0（肯定更新完了啊）。。。。 官方最新版本发布页：https://github.com/gohugoio/hugo/releases 从这个页面获取最新版本的安装包，这里我找到的是0.165.0，https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb
+Copy wegt https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb dpkg &lt;文件目录&gt;\安装包.deb 其他步骤和官网相同。
+二 、git基础命令 Copy git add . #自动扫描项目中所有非排除文件的更改并上传 git add &lt;文件路径&gt; #精准上传指定的文件夹或者文件 git commit -m &#34;文件修改描述&#34; #提交时备注的修改描述 git push -f origin &lt;分支名&gt; #选择要上传的分支 git init #新建本地仓库 git branch #查看当前有的分支 git checkout &lt;分支名&gt; #切换分支 git push origin --delete &lt;分支名&gt; #删除所选分支，删之前记得切换分支。 任务清单 熟悉git命令 搭建个人博客 发布第一篇blog 嗯，同时清晰认知到自己是一个废物。">
 	<meta property="og:locale" content="zh_cn">
-	<meta property="og:type" content="website">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-09-08T20:43:16+08:00">
+		<meta property="article:modified_time" content="2026-09-08T20:43:16+08:00">
 
-	<meta itemprop="name" content="My New Hugo Project">
+	<meta itemprop="name" content="开始-搭建博客">
+	<meta itemprop="description" content="git使用以及搭建Hugo的Ananke主题博客 一、环境搭建 1.习惯养成 每次通过apt install &lt;包名&gt;下载时，先用apt update更新软件包列表（其实有些时候好像并不好使） 2.安装go、hugo 安装go Copy apt update apt install golang-go 安装hugo Copy #官方推荐debian系统使用apt安装 apt install hugo 不知道是apt问题还是什么原因，下载出来的版本是0.111.0（肯定更新完了啊）。。。。 官方最新版本发布页：https://github.com/gohugoio/hugo/releases 从这个页面获取最新版本的安装包，这里我找到的是0.165.0，https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb
+Copy wegt https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb dpkg &lt;文件目录&gt;\安装包.deb 其他步骤和官网相同。
+二 、git基础命令 Copy git add . #自动扫描项目中所有非排除文件的更改并上传 git add &lt;文件路径&gt; #精准上传指定的文件夹或者文件 git commit -m &#34;文件修改描述&#34; #提交时备注的修改描述 git push -f origin &lt;分支名&gt; #选择要上传的分支 git init #新建本地仓库 git branch #查看当前有的分支 git checkout &lt;分支名&gt; #切换分支 git push origin --delete &lt;分支名&gt; #删除所选分支，删之前记得切换分支。 任务清单 熟悉git命令 搭建个人博客 发布第一篇blog 嗯，同时清晰认知到自己是一个废物。">
 	<meta itemprop="datePublished" content="2026-09-08T20:43:16+08:00">
 	<meta itemprop="dateModified" content="2026-09-08T20:43:16+08:00">
+	<meta itemprop="wordCount" content="73">
 	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="My New Hugo Project">
+	<meta name="twitter:title" content="开始-搭建博客">
+	<meta name="twitter:description" content="git使用以及搭建Hugo的Ananke主题博客 一、环境搭建 1.习惯养成 每次通过apt install &lt;包名&gt;下载时，先用apt update更新软件包列表（其实有些时候好像并不好使） 2.安装go、hugo 安装go Copy apt update apt install golang-go 安装hugo Copy #官方推荐debian系统使用apt安装 apt install hugo 不知道是apt问题还是什么原因，下载出来的版本是0.111.0（肯定更新完了啊）。。。。 官方最新版本发布页：https://github.com/gohugoio/hugo/releases 从这个页面获取最新版本的安装包，这里我找到的是0.165.0，https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb
+Copy wegt https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb dpkg &lt;文件目录&gt;\安装包.deb 其他步骤和官网相同。
+二 、git基础命令 Copy git add . #自动扫描项目中所有非排除文件的更改并上传 git add &lt;文件路径&gt; #精准上传指定的文件夹或者文件 git commit -m &#34;文件修改描述&#34; #提交时备注的修改描述 git push -f origin &lt;分支名&gt; #选择要上传的分支 git init #新建本地仓库 git branch #查看当前有的分支 git checkout &lt;分支名&gt; #切换分支 git push origin --delete &lt;分支名&gt; #删除所选分支，删之前记得切换分支。 任务清单 熟悉git命令 搭建个人博客 发布第一篇blog 嗯，同时清晰认知到自己是一个废物。">
 
       
       
     
 	
-  </head><body class="ma0 avenir bg-near-white production is-home">
+  </head><body class="ma0 avenir bg-near-white production is-page is-page page-00-开始-搭建博客">
+   
+  
+
 
   <header>
-    <div class="pb3-m pb6-l bg-black">
+    <div class="bg-black">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l center items-center justify-between">
     <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
@@ -143,51 +209,28 @@
   </div>
 </nav>
 
-      
-      <div class="tc-l pv3 ph3 ph4-ns">
-        <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
-          My New Hugo Project
-        </h1>
-        
-      </div>
     </div>
   </header>
 
-<main class="pb7" role="main"><article class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links mid-gray">
-    
-  </article>
 
-  
-  
-  
-  
+<main class="pb7" role="main">
   
 
-  
-    <div class="pa3 pa4-ns w-100 w-70-ns center">
+  <article class="page-00-开始-搭建博客 flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">
+    <a class="link dim" href="https://mofox-elysia.github.io/posts/">Posts</a>
+  </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">开始-搭建博客</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-09-08T20:43:16+08:00">September 8, 2026</time>
       
 
-      <section class="w-100 mw8">
-        
-        
-          <div class="w-100 mb4 relative">
-            
-
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
-    <div class="flex-column flex-row-ns flex">
       
-      <div class="blah w-100">
-        
-          <time class="f6 db" datetime="2026-09-08T20:43:16+08:00">September 8, 2026</time>
-        
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/00-%E5%BC%80%E5%A7%8B-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="color-inherit dim link">
-            开始-搭建博客
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <h1 id="git使用以及搭建hugo的ananke主题博客">git使用以及搭建Hugo的Ananke主题博客</h1>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><h1 id="git使用以及搭建hugo的ananke主题博客">git使用以及搭建Hugo的Ananke主题博客</h1>
 <h2 id="一环境搭建">一、环境搭建</h2>
 <h3 id="1习惯养成">1.习惯养成</h3>
 <ul>
@@ -243,51 +286,15 @@
 </ul>
 <blockquote>
 <p><del>嗯，同时清晰认知到自己是一个废物。</del></p>
-        </div>
-        <a href="/posts/00-%E5%BC%80%E5%A7%8B-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
-          <div class="w-100 mb4 relative">
-            
-
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
-    <div class="flex-column flex-row-ns flex">
-      
-      <div class="blah w-100">
-        
-          <time class="f6 db" datetime="2026-09-08T13:42:55+08:00">September 8, 2026</time>
-        
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/my-first-post/" class="color-inherit dim link">
-            新的开始
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <h2 id="简介">简介</h2>
-<p>测试博客。
-这是 <strong>粗体</strong> 文字，这是 <em>斜体</em>文字
-请查看 <a href="https://gohugo.io">hugo</a></p>
-        </div>
-        <a href="/posts/my-first-post/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
-      </section>
-
-      
-
-    </div>
+</blockquote>
+<ul class="pa0">
   
+</ul><ul class="pa0">
+  
+</ul>
+
+      
+    </div></article>
 </main><footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://mofox-elysia.github.io/" >
