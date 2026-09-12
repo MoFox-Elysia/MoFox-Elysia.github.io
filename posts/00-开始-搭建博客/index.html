@@ -38,8 +38,8 @@ apt install hugo
     
       Copy
     
-    wegt https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb
-dpkg &lt;文件目录&gt;\安装包.deb
+    wget https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb
+dpkg -i  &lt;文件目录&gt;/安装包.deb
   其他步骤和官网相同。
 二 、git基础命令
 
@@ -160,7 +160,7 @@ git push origin --delete &lt;分支名&gt;  #删除所选分支，删之前记�
 	<meta property="og:site_name" content="MoFox-Elysiaの个人博客">
 	<meta property="og:title" content="开始-搭建博客">
 	<meta property="og:description" content="git使用以及搭建Hugo的Ananke主题博客 一、环境搭建 1.习惯养成 每次通过apt install &lt;包名&gt;下载时，先用apt update更新软件包列表（其实有些时候好像并不好使） 2.安装go、hugo 安装go Copy apt update apt install golang-go 安装hugo Copy #官方推荐debian系统使用apt安装 apt install hugo 不知道是apt问题还是什么原因，下载出来的版本是0.111.0（肯定更新完了啊）。。。。 官方最新版本发布页：https://github.com/gohugoio/hugo/releases 从这个页面获取最新版本的安装包，这里我找到的是0.165.0，https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb
-Copy wegt https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb dpkg &lt;文件目录&gt;\安装包.deb 其他步骤和官网相同。
+Copy wget https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb dpkg -i &lt;文件目录&gt;/安装包.deb 其他步骤和官网相同。
 二 、git基础命令 Copy git add . #自动扫描项目中所有非排除文件的更改并上传 git add &lt;文件路径&gt; #精准上传指定的文件夹或者文件 git commit -m &#34;文件修改描述&#34; #提交时备注的修改描述 git push -f origin &lt;分支名&gt; #选择要上传的分支 git init #新建本地仓库 git branch #查看当前有的分支 git checkout &lt;分支名&gt; #切换分支 git push origin --delete &lt;分支名&gt; #删除所选分支，删之前记得切换分支。 任务清单 熟悉git命令 搭建个人博客 发布第一篇blog 嗯，同时清晰认知到自己是一个废物。">
 	<meta property="og:locale" content="zh_cn">
 	<meta property="og:type" content="article">
@@ -170,15 +170,15 @@ Copy wegt https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withd
 
 	<meta itemprop="name" content="开始-搭建博客">
 	<meta itemprop="description" content="git使用以及搭建Hugo的Ananke主题博客 一、环境搭建 1.习惯养成 每次通过apt install &lt;包名&gt;下载时，先用apt update更新软件包列表（其实有些时候好像并不好使） 2.安装go、hugo 安装go Copy apt update apt install golang-go 安装hugo Copy #官方推荐debian系统使用apt安装 apt install hugo 不知道是apt问题还是什么原因，下载出来的版本是0.111.0（肯定更新完了啊）。。。。 官方最新版本发布页：https://github.com/gohugoio/hugo/releases 从这个页面获取最新版本的安装包，这里我找到的是0.165.0，https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb
-Copy wegt https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb dpkg &lt;文件目录&gt;\安装包.deb 其他步骤和官网相同。
+Copy wget https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb dpkg -i &lt;文件目录&gt;/安装包.deb 其他步骤和官网相同。
 二 、git基础命令 Copy git add . #自动扫描项目中所有非排除文件的更改并上传 git add &lt;文件路径&gt; #精准上传指定的文件夹或者文件 git commit -m &#34;文件修改描述&#34; #提交时备注的修改描述 git push -f origin &lt;分支名&gt; #选择要上传的分支 git init #新建本地仓库 git branch #查看当前有的分支 git checkout &lt;分支名&gt; #切换分支 git push origin --delete &lt;分支名&gt; #删除所选分支，删之前记得切换分支。 任务清单 熟悉git命令 搭建个人博客 发布第一篇blog 嗯，同时清晰认知到自己是一个废物。">
 	<meta itemprop="datePublished" content="2026-09-08T20:43:16+08:00">
 	<meta itemprop="dateModified" content="2026-09-08T20:43:16+08:00">
-	<meta itemprop="wordCount" content="73">
+	<meta itemprop="wordCount" content="74">
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="开始-搭建博客">
 	<meta name="twitter:description" content="git使用以及搭建Hugo的Ananke主题博客 一、环境搭建 1.习惯养成 每次通过apt install &lt;包名&gt;下载时，先用apt update更新软件包列表（其实有些时候好像并不好使） 2.安装go、hugo 安装go Copy apt update apt install golang-go 安装hugo Copy #官方推荐debian系统使用apt安装 apt install hugo 不知道是apt问题还是什么原因，下载出来的版本是0.111.0（肯定更新完了啊）。。。。 官方最新版本发布页：https://github.com/gohugoio/hugo/releases 从这个页面获取最新版本的安装包，这里我找到的是0.165.0，https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb
-Copy wegt https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb dpkg &lt;文件目录&gt;\安装包.deb 其他步骤和官网相同。
+Copy wget https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb dpkg -i &lt;文件目录&gt;/安装包.deb 其他步骤和官网相同。
 二 、git基础命令 Copy git add . #自动扫描项目中所有非排除文件的更改并上传 git add &lt;文件路径&gt; #精准上传指定的文件夹或者文件 git commit -m &#34;文件修改描述&#34; #提交时备注的修改描述 git push -f origin &lt;分支名&gt; #选择要上传的分支 git init #新建本地仓库 git branch #查看当前有的分支 git checkout &lt;分支名&gt; #切换分支 git push origin --delete &lt;分支名&gt; #删除所选分支，删之前记得切换分支。 任务清单 熟悉git命令 搭建个人博客 发布第一篇blog 嗯，同时清晰认知到自己是一个废物。">
 
       
@@ -277,8 +277,8 @@ Copy wegt https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withd
     <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
       <span class="code-copy-label" aria-hidden="true">Copy</span>
     </button>
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wegt https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb
-</span></span><span style="display:flex;"><span>dpkg &lt;文件目录&gt;<span style="color:#ae81ff">\安</span>装包.deb</span></span></code></pre></div>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb
+</span></span><span style="display:flex;"><span>dpkg -i  &lt;文件目录&gt;/安装包.deb</span></span></code></pre></div>
   </div><p>其他步骤和官网相同。</p>
 <h2 id="二-git基础命令">二 、git基础命令</h2>
 <div class="code-block">
@@ -310,7 +310,7 @@ Copy wegt https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withd
 
       
     </div></article>
-</main><footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+</main><footer class="bg-washed-blue bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://mofox-elysia.github.io/" >
     &copy;  MoFox-Elysiaの个人博客 2026 
