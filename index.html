@@ -113,8 +113,8 @@
 	<meta property="og:type" content="website">
 
 	<meta itemprop="name" content="MoFox-Elysiaの个人博客">
-	<meta itemprop="datePublished" content="2026-09-08T20:43:16+08:00">
-	<meta itemprop="dateModified" content="2026-09-08T20:43:16+08:00">
+	<meta itemprop="datePublished" content="2026-09-17T21:25:51+08:00">
+	<meta itemprop="dateModified" content="2026-09-17T21:25:51+08:00">
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="MoFox-Elysiaの个人博客">
 
@@ -188,6 +188,97 @@
 
       <section class="w-100 mw8">
         
+        
+          <div class="w-100 mb4 relative">
+            
+
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+          
+        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+          <a href="/posts/01-hugo&#43;ananke%E7%9A%84%E5%9F%BA%E7%A1%80%E7%BE%8E%E5%8C%96/" class="db grow">
+            <img src="https://fastcdn.mihoyo.com/content-v2/bh3/126656/dbce0de13c5512586e7d61774ada79fd_8179618609892126936.png" class="img" alt="image from 01 Hugo&#43;ananke的基础美化">
+          </a>
+        </div>
+      
+      <div class="blah w-100 w-60-ns pl3-ns">
+        
+          <time class="f6 db" datetime="2026-09-17T21:25:51+08:00">September 17, 2026</time>
+        
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/01-hugo&#43;ananke%E7%9A%84%E5%9F%BA%E7%A1%80%E7%BE%8E%E5%8C%96/" class="color-inherit dim link">
+            01 Hugo&#43;ananke的基础美化
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <h1 id="hugo的ananke主题优化技巧">Hugo的Ananke主题优化技巧</h1>
+<h2 id="一关于hugo的各个目录功能">一、关于Hugo的各个目录功能</h2>
+<ul>
+<li>content：博客.md的文章存放位置。</li>
+<li>layout：用于存放覆盖主题默认样式，修改外观的文件。</li>
+<li>assets：存放自定义CSS和JS的位置。</li>
+<li>static：图片等资源的存放地。</li>
+<li>hugo.toml：全局设置配置文件。</li>
+<li>themes/ananke：原始外观文件。</li>
+</ul>
+<h2 id="二通过使用配置文件美化">二、通过使用配置文件美化</h2>
+<p>在全局设置文件hugo.toml</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>params<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>  background_color_class <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;bg-washed-blue&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#更换网页背景颜色</span>
+</span></span><span style="display:flex;"><span>  featured_image_class <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;cover bg-center&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#cover:覆盖，bg-center：覆盖</span></span></span></code></pre></div>
+  </div><p>想要相关配置生效，还需要在文章开头加上</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>featured_image <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&lt;相对路径&gt;/在线URL&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#由于github的静态网页可能加载很慢，这里选择在线URL</span></span></span></code></pre></div>
+  </div><h2 id="三开启文章目录">三、开启文章目录</h2>
+<p>在每篇文章的 Front Matter 里加一行</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>toc <span style="color:#f92672">=</span> true </span></span></code></pre></div>
+  </div><h2 id="四创建关于界面">四、创建关于界面</h2>
+<p>先新建一个md文章，写入关于界面内容
+然后在hugo.toml内加上</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[[<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;关于&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pageRef</span> = <span style="color:#e6db74">&#34;文件名（无需.md）&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">30</span></span></span></code></pre></div>
+  </div><h2 id="五创建归档页面">五、创建归档页面</h2>
+<p>在 content/ 下新建 archives.md</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+++</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;归档&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">layout</span> = <span style="color:#e6db74">&#34;archives&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+++</span></span></span></code></pre></div>
+  </div><p>在layouts/_default创建archives.html</p>
+        </div>
+        <a href="/posts/01-hugo&#43;ananke%E7%9A%84%E5%9F%BA%E7%A1%80%E7%BE%8E%E5%8C%96/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
         
           <div class="w-100 mb4 relative">
             
