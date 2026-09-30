@@ -1,0 +1,88 @@
+﻿MoFox-Elysia 博客导出
+X-025 / 01 Hugo+ananke的基础美化
+
+日期：2026-09-17
+分类：web周报
+
+# Hugo的Ananke主题优化技巧
+## 一、关于Hugo的各个目录功能
+* content：博客.md的文章存放位置。
+* layout：用于存放覆盖主题默认样式，修改外观的文件。
+* assets：存放自定义CSS和JS的位置。
+* static：图片等资源的存放地。
+* hugo.toml：全局设置配置文件。
+* themes/ananke：原始外观文件。
+## 二、通过使用配置文件美化
+在全局设置文件hugo.toml
+```bash
+[params]
+  background_color_class = "bg-washed-blue"
+#更换网页背景颜色
+  featured_image_class = "cover bg-center"
+#cover:覆盖，bg-center：覆盖
+```
+想要相关配置生效，还需要在文章开头加上
+```bash
+featured_image = "<相对路径>/在线URL"
+#由于github的静态网页可能加载很慢，这里选择在线URL
+````
+## 三、开启文章目录
+ 在每篇文章的 Front Matter 里加一行
+ ```bash
+
+toc = true 
+ 
+ ```
+## 四、创建关于界面
+先新建一个md文章，写入关于界面内容
+然后在hugo.toml内加上
+```toml
+[[menu.main]]
+  name = "关于"
+  pageRef = "文件名（无需.md）"
+  weight = 30
+```
+
+## 五、创建归档页面
+在 content/ 下新建 archives.md
+
+```toml
++++
+title = "归档"
+layout = "archives"
++++
+```
+在layouts/_default创建archives.html
+```html
+{{ define "main" }}
+<div class="archives">
+  {{ range (where .Site.RegularPages "Section" "posts").GroupByDate "2006" }}
+    <h2>{{ .Key }}</h2>
+    <ul>
+      {{ range .Pages }}
+        <li>
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+          <span class="date">{{ .Date.Format "2006-01-02" }}</span>
+        </li>
+      {{ end }}
+    </ul>
+  {{ end }}
+</div>
+{{ end }}
+#写的很烂，上网学的，能用就行，以后在优化吧。
+```
+~~真的会优化吗?~~
+在hugo.toml添加
+```toml
+[[menu.main]]
+  name = "归档"
+  pageRef = "archives"
+  weight = 20
+```
+
+
+## 任务清单
+
+✅ 开启文章目录
+✅ 创建关于界面
+✅ 创建归档页面
