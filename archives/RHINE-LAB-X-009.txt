@@ -1,0 +1,45 @@
+﻿MoFox-Elysia 博客导出
+X-009 / 开始-搭建博客
+
+日期：2026-09-08
+分类：日常
+
+# git使用以及搭建Hugo的Ananke主题博客
+## 一、环境搭建
+### 1.习惯养成
+* 每次通过apt install <包名>下载时，先用apt update更新软件包列表（其实有些时候好像并不好使）
+### 2.安装go、hugo
+* 安装go
+```bash
+apt update
+apt install golang-go 
+```
+* 安装hugo
+```bash
+#官方推荐debian系统使用apt安装
+apt install hugo
+```
+不知道是apt问题还是什么原因，下载出来的版本是0.111.0（肯定更新完了啊）。。。。
+**官方最新版本发布页：https://github.com/gohugoio/hugo/releases**
+从这个页面获取最新版本的安装包，这里我找到的是0.165.0，https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb
+```bash
+wget https://github.com/gohugoio/hugo/releases/download/v0.165.0/hugo_withdeploy_0.165.0_linux-amd64.deb
+dpkg -i  <文件目录>/安装包.deb
+```
+其他步骤和官网相同。
+## 二 、git基础命令
+```bash
+git add .  #自动扫描项目中所有非排除文件的更改并上传
+git add <文件路径>  #精准上传指定的文件夹或者文件
+git commit -m "文件修改描述"  #提交时备注的修改描述
+git push -f origin <分支名>  #选择要上传的分支
+git init  #新建本地仓库
+git branch  #查看当前有的分支
+git checkout <分支名>  #切换分支
+git push origin --delete <分支名>  #删除所选分支，删之前记得切换分支。
+```
+## 任务清单
+- [x] 熟悉git命令
+- [x] 搭建个人博客
+- [x] 发布第一篇blog
+> ~~嗯，同时清晰认知到自己是一个废物。~~

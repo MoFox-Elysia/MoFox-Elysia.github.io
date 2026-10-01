@@ -1,0 +1,381 @@
+﻿MoFox-Elysia 博客导出
+X-017 / RE01 第一周周报
+
+日期：2026-09-23
+分类：re周报
+
+# ~~自力更生~~Re第一周
+
+~~我说大肥鱼实在是太可爱了有没有反对的。~~
+
+## 一、微软大战代码的C环境配置
+下载文件：
+https://gh-proxy.org/https://github.com/brechtsanders/winlibs_mingw/releases/download/16.2.0posix-14.0.0-ucrt-r1/winlibs-x86_64-posix-seh-gcc-16.2.0-mingw-w64ucrt-14.0.0-r1.7z 
+这是GCC必须的前置，需要把bin配置到path
+https://vscode.download.prss.microsoft.com/dbazure/download/stable/7debcd0e2acdea1c52de81bf9ee1620444407dda/VSCodeUserSetup-x64-1.138.0.exe
+VSC下载链接
+~~其他没什么好说的，这个搞不明白的话可能会被从窗户扔出去的吧？~~
+## 二、相关知识
+
+```c++
+#include <stdio.h>
+ 
+int main()
+{
+    printf("Hello, World!");
+    return 0;
+}
+```
+<u>#include <stdio.h></u>：预处理器指令，引入标准输入输出库，使 printf 函数可用。
+
+<u>int main()</u>：主函数，C 程序的唯一入口，程序从这里开始执行。
+
+<u>printf("Hello, World!");</u>：将字符串 Hello, World! 原样输出到屏幕，末尾未加 \n，因此输出后不换行，正好符合题目要求的“输出一行”且内容完全匹配。
+
+<u>return 0;</u>：终止 main() 函数并返回 0，表示程序成功执行
+记住了，***要写;***，必须写！！！！！！！！！
+常见的转义字符有：
+
+| 转义字符 | 含义 |
+| --- | --- |
+| \n | 换行 |
+| \t | 制表符 |
+| \ \ | 反斜杠 |
+| \ " | 双引号 |
+
+```c++
+#include <stdio.h>
+
+int main(void)
+{
+    int i = 10;                      
+    long long l = 10000000000;       
+    float f = 3.14f;                
+    double d = 2.71828;             
+    char c = 'A';                    
+
+    printf("int: %d\n", i);
+    printf("long long: %lld\n", l);
+    printf("float: %.2f\n", f);
+    printf("double: %.5f\n", d);
+    printf("char: %c\n", c);
+
+    return 0;
+}
+```
+### 数据类型
+数据类型及对应的printf格式说明符
+| 类别 | 类型 | 典型存储大小 | 用途 |
+| --- | --- | --- | --- |
+| 整型 | int | 4 字节 | 存储普通整数 |
+| 整型 | long long | 8 字节 | 存储更大的整数 |
+| 浮点型 | float | 4 字节 | 单精度小数 |
+| 浮点型 | double | 8 字节 | 双精度小数 |
+| 字符型 | char | 1 字节 | 存储单个字符 |
+
+| 格式说明符 | 对应数据类型 | 作用 |
+| --- | --- | --- |
+| %d | int | 输出有符号十进制整数 |
+| %lld | long long | 输出 long long 类型的长整型 |
+| %f | float / double | 输出浮点数（默认 6 位小数） |
+| %c | char | 输出单个字符 |
+| %s |  | 字符串 |
+
+<u>备注：格式为 %.Nf	，其中 N 为需要保留的小数位数。</u>
+
+（1）int i = 10;
+int 是 C 语言中最常用的整型，取值范围为 -2,147,483,648 到 2,147,483,647。10 在 int 范围内，可以直接赋值。
+（2）long long l = 10000000000;
+10000000000（一百亿）超出了 int 的最大范围（约 21 亿），如果使用 int 会导致溢出，因此必须用 long long。
+（3）float f = 3.14;
+float提供约 6 位有效数字的精度。
+（4）double d = 2.71828;
+double提供约 15 位有效数字的精度。2.71828
+（5）char c = 'A';
+char 是字符型，占 1 个字节，本质上是一个小整数类型。保存的是该字符的ASCII值。
+### 变量命名规则
+**只能由字母（A–Z, a–z）、数字（0–9）和下划线（_）组成**
+**第一个字符必须是字母或下划线，不能是数**
+**区分大小写，例如 i 和 I 是不同的变量**
+**不能使用 C 语言的关键字（如 int、return 等）作为变量名。**
+
+```c++
+#include <stdio.h>
+
+int main(void) {
+    char letter = 'B';
+    int code = letter;
+
+    printf("%c\n", letter);  
+    printf("%d\n", code);    
+
+    return 0;
+}
+```
+
+```c++
+#include <stdio.h>
+int main()
+{
+    int a, b, sum;                         
+    scanf("%d %d", &a, &b);               
+    sum = a + b;                            
+    printf("%d\n", sum);                    
+    return 0;
+}
+```
+<u>scanf()</u>:C 标准库中用于从键盘读取输入的函数。
+
+### 运算符
+
+| 运算符 | 描述 | 示例 | （A=10, B=20） |
+| --- | --- | --- | --- |
+| + | 把两个操作数相加 | A + B | 得到 30 |
+| - | 从第一个操作数中减去第二个 | A - B | 得到 -10 |
+| * | 把两个操作数相乘 | A * B | 得到 200 |
+| / | 分子除以分母 | B / A | 得到 2 |
+| % | 取模（求余数） | B % A | 得到 0 |
+| ++ | 自增运算符 | A++ | 使 A 变为 1 |
+| -- | 自减运算符 | A-- | 使 A 变为 9 |
+
+```C++
+#include <stdio.h>
+
+int main()
+{
+    int num;                          
+    scanf("%d", &num);               
+    if (num % 2 == 0)                 
+        printf("even\n");          
+    else
+        printf("odd\n");            
+    return 0;
+}
+
+```
+
+| 部分 | 含义 |
+| --- | --- |
+| if (num % 2 == 0) | 条件判断：如果 num 除以 2 的余数等于 0 |
+| printf("even\n"); | 条件为真（是偶数）时执行 |
+| else 否则 | （条件为假） |
+| printf("odd\n"); | 条件为假（是奇数）时执行 |
+
+```c++
+if (条件表达式)
+{
+    // 条件为真（true）时执行的语句
+}
+else
+{
+    // 条件为假（false）时执行的语句
+}
+
+```
+
+```c++
+#include <stdio.h>
+int main()
+{
+    int day;                                    
+    scanf("%d", &day);                         
+    switch (day)                                
+    {
+        case 1:
+            printf("Monday\n");
+            break;
+        case 2:
+            printf("Tuesday\n");
+            break;
+        case 3:
+            printf("Wednesday\n");
+            break;
+        case 4:
+            printf("Thursday\n");
+            break;
+        case 5:
+            printf("Friday\n");
+            break;
+        case 6:
+            printf("Saturday\n");
+            break;
+        case 7:
+            printf("Sunday\n");
+            break;
+        default:                               
+            break;
+    }
+    return 0;
+}
+```
+switch:用于根据一个整型表达式的值
+每个 case 后面跟一个常量，表示当 switch 表达式的值等于该常量时，就执行该分支下的语句。
+case 1: 表示当 day == 1 时，执行下面的语句。
+printf("Monday\n"); :输出 Monday 并换行。
+break; :表示跳出整个 switch 语句，不再继续执行后面的 case。
+default :分支用于处理所有 case 都不匹配的情况。
+
+```c++
+#include <stdio.h>
+int main()
+{
+    int n, i;                        
+    scanf("%d", &n);                
+    for (i = 1; i <= n; i++)        
+    {
+        printf("%d\n", i);          
+    }
+    return 0;
+}
+```
+
+| 部分 | 含义 |
+| --- | --- |
+| i = 1 | 初始化：循环控制变量 i 从 1 开始 |
+| i <= n | 条件判断：只要 i 不超过 n，就继续循环 |
+| i++ | 更新：每次循环后，i 增加 1 |
+| printf("%d\n", i); | 循环体：输出当前 i 的值并换行 |
+
+```c++
+#include <stdio.h>
+int main()
+{
+    int n;                          
+    scanf("%d", &n);               
+    while (n >= 1)                  
+    {
+        printf("%d\n", n);          
+        n--;                        
+    }
+    return 0;
+}
+
+```
+| 部分 | 含义 |
+| --- | --- |
+| while (n >= 1) | 循环条件：只要 n 大于等于 1，就继续循环 |
+| printf("%d\n", n); | 输出当前 n 的值，并换行 |
+| n--; | 每次循环后，把 n 减 1 |
+
+
+### 两种循环的对比
+
+
+| 对比项 | while 循环 | for循环 |
+| --- | --- | --- |
+| 适用场景 | 条件循环，循环次数不一定明确 | 次数循环，循环次数通常已知 |
+| 初始化位置 | 循环外 | for 的第一个表达式中 |
+| 条件判断 | while 括号内 | for 的第二个表达式中 |
+| 更新变量 | 循环体内手动更新 | for 的第三个表达式中 |
+| 是否先判断 | 是，先判断后执行 | 是，先判断后执行 |
+
+```c++
+#include <stdio.h>
+int add(int a, int b);
+int main()
+{
+    int x, y, result;                  
+    scanf("%d %d", &x, &y);            
+    result = add(x, y);                
+    printf("%d\n", result);           
+    return 0;
+}
+int add(int a, int b)
+{
+    return a + b;                     
+}
+```
+函数写法一般如下：
+```c++
+返回类型 函数名(参数列表)
+{
+    函数体
+}
+
+int add(int a, int b)
+{
+    return a + b;
+}
+```
+
+
+| 部分 | 说明 |
+| --- | --- |
+| `int` | 返回类型：函数执行完毕后返回给调用者的数据类型 |
+| `add` | 函数名：遵循标识符命名规则，见名知意 |
+| `(int a, int b)` | 参数列表：两个整型形式参数 |
+| `{ return a + b; }` | 函数体：实现具体功能的语句 |
+
+函数的一般调用形式
+
+```c++
+函数名(实际参数列表);
+result = add(x, y);
+```
+x和y的值被传递给 add 函数的形参 a 和 b
+
+add(x, y) 的返回值被赋给变量 result
+
+### 数组
+```c++
+#include <stdio.h>
+int main()
+{
+    int arr[5] = {1, 2, 3, 4, 5};    
+    for (int i = 0; i < 5; i++)      
+    {
+        printf("%d\n", arr[i]);         
+    }
+    return 0;
+}
+```
+
+| 部分 | 含义 |
+| --- | --- |
+| int | 元素的类型为整型 |
+| arr | 数组名 |
+| [5] | 数组长度为 5，即可以存放 5 个整数 |
+| = {1, 2, 3, 4, 5} | 初始化列表，依次给 5 个元素赋值 |
+
+```C++
+#include <stdio.h>
+int main()
+{
+    int a = 10; 
+    int *p = &a; 
+    printf("%d\n", *p);  
+    *p = 20;            
+    printf("%d\n", a);   
+    return 0;
+}
+```
+
+int *p = &a;
+定义一个整型指针变量p，并将a的地址赋给它。&a取出变量a在内存中的地址；int *表示p只能指向int类型的数据。此时p就"指向"了a，即p中存储的是a的地址。
+
+
+**用指针交换两个数**
+```c++
+#include <stdio.h>
+void swap(int *x, int *y);
+int main()
+{
+    int a, b;                       
+    scanf("%d %d", &a, &b);         
+    swap(&a, &b);                   
+    printf("%d %d\n", a, b);       
+    return 0;
+}
+void swap(int *x, int *y)
+{
+    int temp = *x;                 
+    *x = *y;                        
+    *y = temp;                      
+}
+
+```
+
+
+
+
+要累死了喵。~~想要狠狠的rua大肥鱼的鱼尾巴啊。~~
