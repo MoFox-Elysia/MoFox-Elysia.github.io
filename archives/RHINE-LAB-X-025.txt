@@ -1,0 +1,284 @@
+﻿MoFox-Elysia 博客导出
+X-025 / WEB01 第一、二周周报
+
+日期：2026-09-30
+分类：web周报
+
+# Web一、二周报合集
+
+## Week1
+### 科学上网
+不用过多赘述了，谁还没用这个~~找过神秘学习资料~~？
+### 搜索语法
+这里以我常用的**Bing**作为主要学习的搜索引擎。
+#### 1. 核心操作符
+| 操作符 | 作用 | 示例 | 备注 |
+|---|---|---|---|
+| `" "` | 精确匹配短语 | `"人工智能发展报告"` | 结果过少时可能被忽略 |
+| `-` | 排除关键词 | `苹果 -手机 -iPhone` | 可叠加使用 |
+| `site:` | 限定网站/域名 | `site:gov.cn 高考` | 冒号后不加空格 |
+| `filetype:` | 限定文件类型 | `filetype:pdf 年度报告` | 支持 pdf、docx、ppt 等 |
+| `intitle:` | 关键词出现在标题 | `intitle:"后台登录"` | 可配合引号精确匹配 |
+| `OR` / `\|` | 满足任一条件 | `(ChatGPT OR 文心一言) 对比` | `OR` 必须大写 |
+
+---
+
+#### 2. Bing 独有 / 进阶操作符
+
+| 操作符 | 作用 | 示例 | 备注 |
+|---|---|---|---|
+| `contains:` | 查找链接到指定文件类型的页面 | `site:example.com contains:pdf` | 找的是“链接页”，不是文件本身 |
+| `linkfromdomain:` | 查某域名的所有出站链接 | `linkfromdomain:example.com` | 适合分析外链 |
+| `feed:` | 搜索 RSS/Atom 订阅源内容 | `feed:科技新闻` |  |
+| `hasfeed:` | 查找带订阅源的页面 | `site:example.com hasfeed:` |  |
+
+---
+### Agent以及Token来源
+有幸参加过华为云码道智能体的全程测试，相对于其他Agent，这个Agent我使用超过17个月了，更习惯其操作逻辑。
+![](/images/web1codearts.png)
+对面好不容易埋个挖矿病毒到我电脑，结果被codearts直接解包举报然后清理了（关于上游是阿里云服务器这一块）。
+之后就是我们可爱的蓝色大肥鱼的本家DSH了，这个是部署在安卓平板chroot容器内的智能体（~~随身干活这一块~~）。
+![](/images/web1dsh.jpg)
+当然，我是不可能为了干活给ds付钱的，主要付钱还是为了玩galgame。
+![](/images/web1dshgal.jpg)
+关于稳定的token来源。。。。是时候掏出老东西了。
+![](/images/web1token.png)
+部分渠道是高三时候随手搞的，目前似乎不太好搞这种白嫖渠道了。
+这时候肯定有人要说白嫖没有好模型了。。。那请你看下面这个
+![](/images/web1token2.png)
+![](/images/web1token3.png)
+### 关于MarkDown文档
+~~太难了，我不会喵，学长救救！！！~~
+
+### 安装并配置Burp Suite
+通过咸鱼花费0.01巨款购得25.3.1汉化破解版，你鱼的资源服务依旧震撼人心。
+下载方式以及教程链接:https://pan.baidu.com/s/1Dz8hYH6IjPU11EzWlZe7FA?pwd=3657 
+![](/images/web1bprun.png) 
+抓包可以选择代理或i在使用内置浏览器（我个人偏爱内置）
+![](/images/web1bpuse.png) 
+
+* Proxy：代理拦截，抓取、查看、修改浏览器和服务器之间的 HTTP/HTTPS 请求。
+* HTTP history：HTTP 历史记录，查看经过 Proxy 的所有请求和响应。
+* Repeater：重放器，手动修改单个请求并反复发送，观察响应变化。
+* Intruder：入侵者/自动化攻击模块，用于爆破、枚举、参数 Fuzz、目录扫描等。
+
+|  | GET | POST |
+|---|---|---|
+| 主要作用 | 获取资源、查询 | 提交数据、创建/修改 |
+| 参数位置 | URL 查询字符串 `?a=1&b=2` | 通常在请求体 body |
+| 可见性 | 地址栏、历史、日志可见 | 相对不显示，但抓包可见 |
+| 缓存/书签 | 可缓存、可书签 | 通常不缓存、不可书签 |
+| 限制 | 受浏览器/服务器限制 | 一般可传更大数据 |
+| 典型场景 | 搜索、分页、查详情 | 登录、注册、发帖、上传 |
+
+关于常见请求头
+* Cookie是传输载体
+* Session是服务端会话
+* JWT是自包含令牌
+
+#### HTTP 状态码速查表
+
+| 状态码 | 含义 | 抓包时看什么 |
+|---|---|---|
+| 200 | OK 成功 | 正常响应 |
+| 201 | Created 已创建 | POST 创建成功 |
+| 204 | No Content | 成功但无 body |
+| 301 | 永久重定向 | Location 新地址 |
+| 302 | 临时重定向 | 登录跳转最常见 |
+| 304 | Not Modified | 缓存有效 |
+| 400 | Bad Request | 参数错误 |
+| 401 | Unauthorized | 未认证，常带 WWW-Authenticate |
+| 403 | Forbidden | 已认证但无权限 |
+| 404 | Not Found | 资源不存在 |
+| 405 | Method Not Allowed | 方法不对 |
+| 429 | Too Many Requests | 限流 |
+| 500 | Internal Server Error | 服务端异常 |
+| 502 | Bad Gateway | 网关/上游错误 |
+| 503 | Service Unavailable | 服务不可用 |
+| 504 | Gateway Timeout | 网关超时 |
+
+#### 前端三件套
+HTML 是网页的骨架，用标签描述“页面上有什么”。
+```html
+<h1>标题</h1>
+<p>一段文字</p>
+<button>按钮</button>
+<img src="logo.png">
+<a href="/login">登录</a>
+```
+> 定义标题、段落、表单、链接、图片、按钮等
+
+CSS 决定网页“长什么样”。
+```css
+h1 {
+  color: blue;
+  font-size: 24px;
+}
+.login-btn {
+  background: green;
+  border-radius: 4px;
+}
+
+```
+> 颜色、字体、间距、排版
+
+JS 让网页“动起来”，可以改页面、发请求、处理点击。
+```js
+document.querySelector("button").addEventListener("click", () => {
+  alert("你点了按钮");
+});
+
+fetch("/api/user")
+  .then(res => res.json())
+  .then(data => console.log(data));
+```
+
+> 交互、校验、动态渲染、调用后端 API
+
+#### 前端构成
+
+| 类型 | 常见文件 | 作用 |
+|---|---|---|
+| HTML | .html | 页面结构 |
+| CSS | .css | 页面样式 |
+| JS | .js | 页面行为 |
+| 图片 | .png/.jpg/.svg/.webp | 视觉资源 |
+| 字体 | .woff2 | 字体 |
+| 接口数据 | JSON | 动态内容 |
+
+Hackbar对edge的支持好像不是很好，暂时决定还是只用BP
+
+### prthon（Flask框架）登录界面学习记录
+参考资料：https://www.cnblogs.com/ityouknow/p/12993209.html
+> 因为基础烂的要死，所以使用了gpt6sol和deepseekv4.1flash作为辅助学习。
+
+以下是根据资料讲述写的逻辑图。~~鬼知道这个破逻辑图改了多少次才显示正常，力竭了喵。~~
+```mermaid
+flowchart LR
+    A["1 登录<br/>用户提供登录凭证（如用户名和密码）提交给服务器"] --> B{"服务器验证凭证"}
+
+    B -- 验证通过 --> C["2 建立会话<br/>建立会话 Session，并返回会话号 Session id 给用户"]
+    B -- 验证失败 --> B1["拒绝登录 / 要求重新输入"]
+
+    C --> D["3 验证<br/>用户在后续交互中提供 Session id"]
+    D --> E{"服务器根据 Session id 确定用户是否有效"}
+
+    E -- 有效 --> F["允许继续交互"]
+    E -- 无效 --> E1["拒绝访问 / 要求重新登录"]
+
+    F -->|继续后续交互| D
+    F --> G["4 登出<br/>用户不再与服务器交互"]
+    G --> H["注销与服务器建立的会话"]
+    H --> I([结束])
+
+    B1 --> A
+    E1 --> A
+```
+#### 项目结构
+
+```text
+my_login_app/
+├── app.py          # Flask 主程序
+└── templates/
+    └── login.html  # 登录页面
+```
+python，venv，然后安装flask(找到的那篇博客研究了一遍，不过只是为了学习逻辑，所以没做那么全)
+![](/images/web1pylogingrun.png) 
+
+```python
+from flask import Flask, request, render_template
+#从 flask 包导入 Flask 类、request 对象、render_template 函数。
+#Flask：创建 Flask 应用。
+#request：获取请求信息，比如表单数据、请求方法。
+#render_template：渲染 HTML 模板文件。
+#创建一个 Flask 应用实例
+app = Flask(__name__)
+# 用字典模拟一个简单的用户数据库
+users = {
+    "admin": "admin123",
+    "user": "user123"
+}
+@app.route('/', methods=['GET', 'POST'])
+#路由装饰器，把下面的 login() 函数绑定到网站根路径。同时支持GET和POST请求。
+def login():
+#定义视图函数，当访问 / 时执行。
+    if request.method == 'POST':  
+        # 如果是 POST 请求，说明用户提交了表单
+        username = request.form['username']  
+        # 获取表单中的用户名
+        password = request.form['password']  
+        # 获取表单中的密码
+        if username in users and users[username] == password:  
+            # 检查用户名和密码是否正确
+            return f"欢迎, {username}!"  
+            # 登录成功，返回欢迎信息
+        else:
+            return "用户名或密码错误，请重试。"  
+            # 登录失败，返回错误信息
+    else:  
+        # 如果是 GET 请求，说明用户只是访问页面
+        return render_template('login.html')  
+        # 渲染 login.html 模板并返回
+if __name__ == '__main__':
+     app.run(debug=True)
+```
+前端也是能用就行（懒）
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<body>
+    <h2>用户登录</h2>
+    <form method="post">
+        <label>用户名：</label>
+        <input type="text" name="username" required><br><br>
+
+        <label>密码：</label>
+        <input type="password" name="password" required><br><br>
+
+        <button type="submit">登录</button>
+    </form>
+</body>
+</html>
+
+```
+![](/images/web1loginweb.png) 
+![](/images/web1longinOK.png) 
+
+流程：HTML定义请求格式-->用户发送的POST请求到达Flask-->后端验证-->返回响应
+
+## Week2
+
+### 关于linux环境
+这个是不用担心的，毕竟我家基本上所有arm和x86设备的最终归宿都是debian，至于实操。。。。
+还是等我的bios芯片到货我换上去在说吧。
+### 关于docker
+我个人在linux发行版很少使用docker，一般都是在群晖和爱快软路由里面用，当然这个得等bios修好才能实操了,16G开虚拟机还是有点够呛。。。。
+### SQL Injection漏洞学习
+总算是到正题了，当前北京时间26年9月28号00:25,累死了喵，~~突然想rua小肥龙尾巴了。~~
+
+#### 1、产生原因
+应用程序没有把“用户输入的数据”和“SQL 代码”正确分离，导致用户可控输入被数据库当作 SQL 语句的一部分执行了。也就是说SQL 注入不是数据库本身“自动产生”的漏洞，而是应用层动态构造 SQL 时，把数据错误地当成了代码。
+以下为deepseek提供的示例：
+```text
+' OR '1'='1 #用户的输入
+```
+经过魔法拼接变成如下格式：
+```sql
+SELECT * FROM users 
+WHERE username = '' OR '1'='1' AND password = ''
+
+```
+原本是查用户名和密码，结果条件被改成恒成立，从而绕过验证。
+#### 2、危害
+前面已经说了，可以绕过验证，那么很显然，可以用这个方式提权，然后。。。。嗯，数据库账号权限越高，他能干的事越多。（如果是root呢？乐，洗洗睡吧，救不回来了）
+#### 3、寻找
+找到用户可控的输入点，判断它是否进入 SQL 查询，再验证输入能否改变 SQL 的语义或执行结果。
+所有能进入后端的输入都值得尝试，所以要找全，如：GET/POST，Cookie等。
+之后使用可以破坏sql语法的字符，如单引号，双引号，反斜杠，括号等。
+或者直接查看源码关注字符串拼接和动态SQL。
+#### 4、实践。
+咕咕咕。。。。。额，以后会补上的，相信我。。。。

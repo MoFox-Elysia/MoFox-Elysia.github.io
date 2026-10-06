@@ -1,0 +1,147 @@
+﻿MoFox-Elysia 博客导出
+X-033 / 博客更新与部署指南
+
+日期：2026-09-30
+分类：修改报告
+
+本篇记录如何向莱茵生命博客添加新文章、构建、部署到 GitHub Pages，以及后续更改流程。
+
+## 一、添加新文章
+
+### 1. 创建 Markdown 文件
+
+在 `posts/` 目录新建 `.md` 文件，使用 TOML frontmatter（`+++` 包裹）：
+
+```toml
++++
+date = '2026-10-01T12:00:00+08:00'
+draft = false
+title = '文章标题'
+featured_image = "https://example.com/cover.png"
++++
+
+正文 Markdown 内容...
+```
+
+- `draft = true` 的文章会被跳过，不显示
+- `featured_image` 可选，作为详情页题图
+- 本地图片放 `public/images/`，正文用 `![](/images/文件名.png)` 引用
+
+### 2. 配置分类映射
+
+打开 `src/blog-source.ts`，在 `categories` 对象里加一行：
+
+```ts
+"你的文件名.md": "re周报",
+```
+
+分类必须是五列之一：**随笔 / 日常 / re周报 / web周报 / 修改报告**
+
+未映射的文件默认归"随笔"列。文件名按字典序（`localeCompare`）决定列内排列顺序，可用数字前缀控制顺序（如 `02-xxx.md`）。
+
+### 3. 每列容量
+
+每列自动用占位填充到至少 8 篇，无需担心数量不够。真实文章不足 8 篇时，剩余位置显示"即将发布"占位。
+
+## 二、本地构建与验证
+
+### 1. 构建
+
+```bash
+npm run build
+```
+
+生成 `dist/` 目录，包含全部静态资源。
+
+### 2. 校验
+
+```bash
+node scripts/check-archive.mjs
+node scripts/check-motion.mjs
+```
+
+确认档案结构和动效校验通过。
+
+### 3. 本地预览
+
+```bash
+npm run preview
+```
+
+浏览器打开 `http://localhost:4173/` 验证。可用 query 参数跳过启动动画：
+
+- `?scene=archive` 直接进阵列页
+- `?scene=detail` 直接进详情页
+
+## 三、部署到 GitHub Pages
+
+### 仓库信息
+
+- 仓库：`MoFox-Elysia/MoFox-Elysia.github.io`
+- 源分支：`gh-pages`（**不是 main**）
+- 访问地址：https://MoFox-Elysia.github.io/
+- base 路径：`/`（username Pages，Vite 默认配置无需改）
+
+### 部署步骤
+
+1. 确认 `dist/` 已构建
+2. 在 `dist/` 根目录加 `.nojekyll` 空文件（禁用 Jekyll 处理）
+3. 初始化 git 并推送：
+
+```bash
+cd dist
+touch .nojekyll
+git init -b gh-pages
+git config user.name "MoFox-Elysia"
+git config user.email "MoFox-Elysia@users.noreply.github.com"
+git add -A
+git commit -m "deploy"
+git remote add origin https://MoFox-Elysia:<TOKEN>@github.com/MoFox-Elysia/MoFox-Elysia.github.io.git
+git push -f origin gh-pages
+git remote remove origin
+```
+
+4. 等 30 秒 GitHub Pages 自动构建完成
+5. 访问 https://MoFox-Elysia.github.io/ 验证
+
+### 注意事项
+
+- 用 `--force` 推送会覆盖远程 gh-pages 分支全部内容
+- 推完后删除 remote URL（含 token）或删除 `dist/.git` 目录，避免 token 泄露
+- `.nojekyll` 文件必须存在，否则 `assets/` 等目录会被 Jekyll 跳过
+
+## 四、后续更改流程
+
+### 改文章内容
+
+1. 编辑 `posts/对应文件.md`
+2. `npm run build`
+3. 重新部署 GitHub Pages（同上第三节）
+
+### 加新文章
+
+1. 按"一、添加新文章"操作
+2. `npm run build`
+3. 重新部署
+
+### 改分类名
+
+1. 改 `src/blog-source.ts` 的 `blogColumns` 数组
+2. 同步改 `categories` 映射里对应的分类名
+3. `npm run build` + 重新部署
+
+### 改三维动效
+
+三维动效核心文件（`scene.ts` / `motion.ts` / `appearance.ts` / `archive-loop.ts` / `archive-lighting.ts` / `model-viewer.ts` / `boot.ts` / `boot-motion.ts`）改动前务必备份，并与原版 `00-原生\RhineLabUI\` 对比确认动效未被破坏。
+
+## 五、文件结构速查
+
+```
+posts/                    Markdown 文章源
+public/images/            本地图片（Vite 原样复制到 dist）
+src/blog-source.ts        分类映射 + frontmatter 解析
+src/content.ts            数据层（调用 blog-source）
+src/markdown.ts           markdown-it 渲染封装
+src/main.ts               详情页渲染（题图 + 正文）
+dist/                     构建产物（部署用）
+```
